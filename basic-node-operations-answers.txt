@@ -1,0 +1,43 @@
+Questions
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+sort: returns the file sorted alphabetically line by line with numbers first and special characters last. This returned the file divided by indentation, starting with the furthest indented lines sorted alphabetically, followed by the second most indented lines sorted alphabetically, continuing all the way to unindented lines.
+
+wc(word count):  returns the newline count, word count, and byte count for the file, in this case 35, 69 and 828 followed by the file name.
+
+uniq: returns the file excluding any repeated adjacent lines, can be paired with sort to remove all repeated lines. In this case, I don't see any difference but also don't see any repeated adjacent lines in the original file. There are repeated lines that are not adjacent though, so using a sort first would probably eliminate some repeated lines.
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+To test what I was guessing above, I ran "sort commands.js | uniq | wc" to see if any values were smaller. The output was 28, 66, and 797, so there were fewer newlines, words, and bytes. So it looks like about 7 lines but only 3 words were removed, mostly curly braces and one of the breaks.
+
+Programming Questions
+
+3. Implement the head command in the commands.js file. The head command outputs the first n lines of a file (you may decide what n is). This function will be similar to cat in structure so it will be helpful to reference.
+
+4. Implement the tail command in the commands.js file. The tail command is the inverse of the head command. It outputs the last n lines of a file (you may decide what n is).
+
+5. It is possible that a user will input a non-existent command to our bash shell. Within commands.js create an errorHandler function which will output an error message if the command cannot be found.
+
+Hint: Use the default: case in your switch statement.
+
+6. In this checkpoint, you encountered built-in JavaScript methods as well as the new ES6 syntax. Review the information below before attempting the programming challenge.
+
+Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+
+Example
+Input: "I'm learning to program algorithms!"
+Output: "m'I gninrael ot margorp !smhtirogla"
+
+
+function reverseString(inputString) {
+  var splitString = inputString.split(' ');
+  var reversedArray = [];
+  splitString.forEach((element => {
+    reversedArray.push(element.split('').reverse().join(''));
+  }));
+  reversedString = reversedArray.join(' ');
+  return reversedString;
+};
+
+reverseString('hello world');
